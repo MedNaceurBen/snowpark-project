@@ -42,6 +42,7 @@ GRANT OWNERSHIP ON WAREHOUSE HOL_WH TO ROLE HOL_ROLE;
 CREATE OR REPLACE SCHEMA HOL_DB.EXTERNAL;
 CREATE OR REPLACE SCHEMA HOL_DB.RAW_POS;
 CREATE OR REPLACE SCHEMA HOL_DB.HARMONIZED;
+CREATE OR REPLACE SCHEMA HOL_DB.RAW_CUSTOMER;
 CREATE OR REPLACE SCHEMA HOL_DB.ANALYTICS;
 
 USE SCHEMA HOL_DB.EXTERNAL;
@@ -50,6 +51,7 @@ CREATE OR REPLACE FILE FORMAT HOL_DB.EXTERNAL.PARQUET_FORMAT
     TYPE = 'PARQUET' -- un format de fichier colonnes (columnar)
     COMPRESSION = 'SNAPPY'; -- méthode de compression;
 
+-- Un stage Snowflake est un objet qui pointe vers un stockage externe comme S3, permettant de charger des fichiers dans Snowflake sans les importer manuellemen
 CREATE OR REPLACE STAGE HOL_DB.EXTERNAL.FROSTBYTE_RAW_STAGE
     URL = 's3://sfquickstarts/data-engineering-with-snowpark-python/';
 
