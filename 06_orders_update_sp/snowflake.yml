@@ -1,0 +1,21 @@
+definition_version: 1
+
+snowpark:
+  project_name: "stored_procedure"
+  stage_name: "HOL_DB.HARMONIZED.DEPLOYMENT"
+  src: "orders_update_sp"
+
+  procedures:
+    - name: "orders_update_sp"
+      database: "HOL_DB"
+      schema: "HARMONIZED"
+      handler: "procedure.stored_procedure"
+      runtime: "3.10"
+      signature: []
+      returns: STRING
+
+
+
+
+# snow sql -q "CALL HOL_DB.HARMONIZED.ORDERS_UPDATE_SP();"
+# snow snowpark execute procedure "hol_db.harmonized.orders_update_sp()"
