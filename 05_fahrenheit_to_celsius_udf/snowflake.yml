@@ -1,0 +1,26 @@
+definition_version: 1                                 # 👉 Version du format SnowCLI (toujours 1 pour Snowpark)
+snowpark:
+  project_name: "temperature_conversion"              # 👉 Nom du projet (juste pour organiser le projet)
+  stage_name: "HOL_DB.ANALYTICS.DEPLOYMENT"                    # 👉 Stage Snowflake où le code Python sera uploadé (ZIP) # analytics = database et deployment = stage
+  src: "fahrenheit_to_celsius_udf/"                   # 👉 Dossier local contenant le code Python
+  functions:
+    - name: "fahrenheit_to_celsius_udf"               # 👉 Nom de la fonction SQL dans Snowflake
+      database: "HOL_DB"                              # 👉 Base de données cible
+      schema: "ANALYTICS"                             # 👉 Schéma cible
+      handler: "function.fahrenheit_to_celsius"       # 👉 fichier function.py + fonction fahrenheit_to_celsius()
+      runtime: "3.10"                                 # 👉 version Python utilisée dans Snowflake
+      signature:                                      # 👉 paramètre d’entrée
+        - name: "temp_f"
+          type: "float"
+
+      returns: float                                  # 👉 type de retour (FLOAT)
+
+
+
+# 👉 build = prépare ton projet (zip + validation), mais ne touche pas encore à Snowflake
+# 👉 snow snowpark build : le build SnowCLI sert uniquement à empaqueter et vérifier ton code avant déploiement dans Snowflake.
+
+# 👉  snow snowpark deploy : Déploie le code Python en UDF dans Snowflake (stage + création fonction SQL)
+
+# Pour exécuter une UDF Snowflake depuis le terminal avec SnowCLI, la commande est :
+  # snow snowpark execute function "HOL_DB.ANALYTICS.fahrenheit_to_celsius_udf(35)"

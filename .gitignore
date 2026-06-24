@@ -3,3 +3,12 @@ __pycache__/
 *.pyc
 .env
 .vscode/
+
+# Snowflake / SnowCLI
+.packages/
+*.zip
+requirements.snowflake.txt
+
+# IDE
+.vscode/
+.idea/
