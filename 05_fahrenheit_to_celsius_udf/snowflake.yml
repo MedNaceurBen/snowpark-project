@@ -1,7 +1,7 @@
 definition_version: 1                                 # 👉 Version du format SnowCLI (toujours 1 pour Snowpark)
 snowpark:
   project_name: "temperature_conversion"              # 👉 Nom du projet (juste pour organiser le projet)
-  stage_name: "HOL_DB.ANALYTICS.DEPLOYMENT"                    # 👉 Stage Snowflake où le code Python sera uploadé (ZIP) # analytics = database et deployment = stage
+  stage_name: "HOL_DB.ANALYTICS.DEPLOYMENT"           # 👉 Stage Snowflake où le code Python sera uploadé (ZIP) # analytics = database et deployment = stage
   src: "fahrenheit_to_celsius_udf/"                   # 👉 Dossier local contenant le code Python
   functions:
     - name: "fahrenheit_to_celsius_udf"               # 👉 Nom de la fonction SQL dans Snowflake
